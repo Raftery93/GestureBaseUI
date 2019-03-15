@@ -405,7 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee45a0408fa1d24c9ec17fc4d53f0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myo: {fileID: 0}
+  myo: {fileID: 550533453}
+  player: {fileID: 1649264984}
   playerJumpPower: 1250
   isGrounded: 0
 --- !u!114 &1649264991
