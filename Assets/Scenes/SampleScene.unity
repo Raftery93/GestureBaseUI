@@ -380,19 +380,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
---- !u!114 &1649264987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649264984}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9dbd4fb92d94ec7b7c56eda32a02eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myo: {fileID: 550533453}
 --- !u!114 &1649264989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,23 +396,6 @@ MonoBehaviour:
   player: {fileID: 1649264984}
   playerJumpPower: 1250
   isGrounded: 0
---- !u!114 &1649264991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649264984}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f73c111e5a1436295869186e2e823f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myo: {fileID: 550533453}
-  player: {fileID: 1649264984}
-  playerSpeed: 0
-  playerJumpPower: 70
-  moveX: 0
 --- !u!1 &2036237877 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1360970369166310, guid: 942f8e607ded3aa41ab106be9687fa7b,
