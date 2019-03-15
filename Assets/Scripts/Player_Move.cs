@@ -46,7 +46,7 @@ public class Player_Move : MonoBehaviour
     {
         playerSpeed = 10; // Set the player speed to 10.
         moveX = Input.GetAxis("Horizontal");
-        Debug.Log("Move DX ---> " + moveX);
+        //Debug.Log("Move DX ---> " + moveX);
 
         if (Input.GetButtonDown("Jump")) // If the space bar is hit.
         {
@@ -128,7 +128,7 @@ public class Player_Move : MonoBehaviour
         }
         player.GetComponent<Rigidbody2D>().velocity = new Vector2(
         moveX * playerSpeed, player.GetComponent<Rigidbody2D>().velocity.y); // Move the player.
-        Debug.Log("Moving X ---> " + moveX);
+     //   Debug.Log("Moving X ---> " + moveX);
 
     }
 
