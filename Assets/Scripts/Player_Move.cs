@@ -34,6 +34,7 @@ public class Player_Move : MonoBehaviour
 
     }
 
+    //Move player
     void PlayerMove()
     {
         KeyBoardMovement(); // Trigger keyboard controlls method.
