@@ -46,7 +46,7 @@ public class Player_Move : MonoBehaviour
         moveX = Input.GetAxis("Horizontal");
         Debug.Log("Move DX ---> " + moveX);
 
-        if (Input.GetButtonDown("Jump")) // If the space bar is hit.
+        if (Input.GetButtonDown("Jump") && isGrounded == true) // If the space bar is hit.
         {
             Jump();
         }
@@ -75,11 +75,19 @@ public class Player_Move : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "ground")
+        {
+            isGrounded = true;
+        }
+    }
+
     private void Jump()
     {
        
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); // Character moves up.
-          //  isGrounded = false; // Character is not grounded and therefore cannot jump.
+            isGrounded = false; // Character is not grounded and therefore cannot jump.
 
         
         
