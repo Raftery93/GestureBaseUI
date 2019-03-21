@@ -38,8 +38,8 @@ public class Player_Move : MonoBehaviour
     //Move player
     void PlayerMove()
     {
-        KeyBoardMovement(); // Trigger keyboard controlls method.
-        //MyoMovements();
+        //KeyBoardMovement(); // Trigger keyboard controlls method.
+        MyoMovements();
     }
 
     void KeyBoardMovement()
