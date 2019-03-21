@@ -165,6 +165,12 @@ public class Player_Move : MonoBehaviour
     // Raycast method.
     void playerRaycast()
     {
+
+        RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
+        if (rayUp != null && rayUp.collider != null && rayUp.distance < distanceToBottomPlayer && rayUp.collider.tag == "BreakBox")
+        {
+            Destroy(rayUp.collider.gameObject); // To destroy the breakable boxes.
+        }
         RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down); // To kill an enemy when jumped on.
         if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag == "Enemy")
         {
