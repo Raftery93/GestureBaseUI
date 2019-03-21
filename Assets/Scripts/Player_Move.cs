@@ -38,8 +38,8 @@ public class Player_Move : MonoBehaviour
     //Move player
     void PlayerMove()
     {
-        //KeyBoardMovement(); // Trigger keyboard controlls method.
-        MyoMovements();
+        KeyBoardMovement(); // Trigger keyboard controlls method.
+        //MyoMovements();
     }
 
     void KeyBoardMovement()
@@ -77,7 +77,7 @@ public class Player_Move : MonoBehaviour
 
 
         // Vibrate the Myo armband when a fist is made.
-        if (thalmicMyo.pose == Pose.Fist)
+        if (thalmicMyo.pose == Pose.Fist && isGrounded == true) // Test this. ---------------------------------------------------------
         {
            
             Jump();
@@ -155,13 +155,13 @@ public class Player_Move : MonoBehaviour
     {
        
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); // Character moves up.
-<<<<<<< HEAD
+
             isGrounded = false; // Character is not grounded and therefore cannot jump.
-=======
+
           //  isGrounded = false; // Character is not grounded and therefore cannot jump. 
     }
 
->>>>>>> d944c4ce6604680eca92ac7efdb8c11f64ff7f04
+//>>>>>>> d944c4ce6604680eca92ac7efdb8c11f64ff7f04
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
     // recognized.

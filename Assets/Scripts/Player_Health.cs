@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class Player_Health : MonoBehaviour
 {
-
-    public int health;
-    public bool hasDied;
+    public int deathPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        hasDied = false;    
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasDied == true)
+        if (gameObject.transform.position.y < deathPoint)
         {
-            Debug.Log("Player has died");
-
+            Die();
         }
+    }
+
+    void Die()
+    {
+        Debug.Log("Die");
     }
 }
