@@ -19,6 +19,12 @@ public class Enemy_Move : MonoBehaviour
         if (hit.distance < hitDistance)
         {
             FlipEnemy();
+            if (hit.collider.tag == "Player") // If the enemy hits the player.
+            {
+               
+                Destroy(hit.collider.gameObject); // Kill the player and redirect to levels menu.
+              
+            }
         }
     }
 

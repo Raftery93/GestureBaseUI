@@ -35,10 +35,17 @@ public class Player_Score : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D trig)
     {
+        
         if (trig.gameObject.name == "EndLevel")
         {
             CountScore();
             Debug.Log("End.");
+        }
+
+        if (trig.gameObject.tag == "Coin") // if the player hits a seed
+        {
+            score += 10; // increase the player score by 10
+            Destroy(trig.gameObject); // and destroy the seed to give the illusion that the hamster consumed it
         }
     }
 

@@ -18,6 +18,7 @@ public class Player_Move : MonoBehaviour
     public int playerJumpPower = 1250;
     private float moveX;
     public bool isGrounded;
+    private float distanceToBottomPlayer = 0.9f;
 
     // Use this for initialization
     void Start()
@@ -30,7 +31,7 @@ public class Player_Move : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
+        playerRaycast(); // Start the player Raycast.
         PlayerMove(); // Move the player.
 
     }
@@ -159,6 +160,26 @@ public class Player_Move : MonoBehaviour
             isGrounded = false; // Character is not grounded and therefore cannot jump.
 
           //  isGrounded = false; // Character is not grounded and therefore cannot jump. 
+    }
+
+    // Raycast method.
+    void playerRaycast()
+    {
+        RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down); // To kill an enemy when jumped on.
+        if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag == "Enemy")
+        {
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1000);
+            rayDown.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 200);// Move to the right after hit enemy.
+            rayDown.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 8;
+            rayDown.collider.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+            rayDown.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            rayDown.collider.gameObject.GetComponent<Enemy_Move>().enabled = false;
+        }
+
+        if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag != "Enemy")
+        {
+            isGrounded = true; // So the player can bounce on the enemy
+        }
     }
 
 //>>>>>>> d944c4ce6604680eca92ac7efdb8c11f64ff7f04
