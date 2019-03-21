@@ -11,12 +11,15 @@ public class Player_Score : MonoBehaviour
     public GameObject timeLeftUI;
     public GameObject playerScoreUI;
     public GameObject highScore;
+    string sceneName;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Scene m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
+        sceneName = m_Scene.name; // get a handle on the active scene name
+        highScore.gameObject.GetComponent<Text>().text = "High Score " + HighScore.getHighScore(sceneName); // load the highscore from the player prefs
     }
 
     // Update is called once per frame
@@ -53,6 +56,15 @@ public class Player_Score : MonoBehaviour
     {
         score = score + (int)(timeLeft * 10); // calculate the current score with this formula
         Debug.Log("Score ---> " + score);
+
+        Scene m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
+        string sceneName = m_Scene.name; // get a handle on the active scenes name
+
+        int highScore = HighScore.getHighScore(sceneName);// get a handle on the high socre for the active scene
+        if (score > highScore) // if the current score is higher than the highscore
+        {
+            HighScore.setHighScore(sceneName, score); // override the high score with the current score
+        }
     }
 
 }
