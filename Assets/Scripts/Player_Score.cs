@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Player_Score : MonoBehaviour
 {
-    private float timeLeft = 120f;
+    private float timeLeft = 100f;
     public int score = 0;
     public GameObject timeLeftUI;
     public GameObject playerScoreUI;
@@ -30,7 +30,7 @@ public class Player_Score : MonoBehaviour
         playerScoreUI.gameObject.GetComponent<Text>().text = "Score: " + score;
         if (timeLeft < 0.1f) // if the time runs out
         {
-            SceneManager.LoadScene("SampleScene");// Reload SampleScene.
+            SceneManager.LoadScene("Level");// Reload SampleScene.
 
         }
 

@@ -20,6 +20,8 @@ public class Player_Move : MonoBehaviour
     public bool isGrounded;
     private float distanceToBottomPlayer = 0.9f;
 
+    public Rigidbody2D rb;
+
     // Use this for initialization
     void Start()
     {
@@ -40,7 +42,7 @@ public class Player_Move : MonoBehaviour
     void PlayerMove()
     {
         KeyBoardMovement(); // Trigger keyboard controlls method.
-        //MyoMovements();
+      //  MyoMovements();
     }
 
     void KeyBoardMovement()
@@ -67,25 +69,31 @@ public class Player_Move : MonoBehaviour
         moveX * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y); // Move the player.
     }
 
+   
+
     void MyoMovements()
     {
 
-        playerSpeed = 5; // Set the player speed to 10.
-        playerJumpPower = 70;
+        playerSpeed = 7; // Set the player speed to 10.
+        playerJumpPower = 500;
 
         // Access the ThalmicMyo component attached to the Myo game object.
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
 
 
         // Vibrate the Myo armband when a fist is made.
-        if (thalmicMyo.pose == Pose.Fist && isGrounded == true) // Test this. ---------------------------------------------------------
+        if (thalmicMyo.pose == Pose.Fist ) // Test this. ---------------------------------------------------------
         {
-           
-            Jump();
+            //&& isGrounded == true
+            //  Jump();
+       //     moveX = 1.0f;
 
-          //  ExtendUnlockAndNotifyUserAction (thalmicMyo);
 
-           
+        //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+
+            //  ExtendUnlockAndNotifyUserAction (thalmicMyo);
+
+
         }
         else if (thalmicMyo.pose == Pose.WaveIn)
         {
@@ -105,9 +113,9 @@ public class Player_Move : MonoBehaviour
         }
         else if (thalmicMyo.pose == Pose.DoubleTap)
         {
-
             
-            Debug.Log("Double tap.");
+            
+            Debug.Log("---> Double tap.");
 
             ExtendUnlockAndNotifyUserAction(thalmicMyo);
         }
@@ -115,6 +123,10 @@ public class Player_Move : MonoBehaviour
         {
            
             moveX = 0.0f;
+        }
+        else if(thalmicMyo.pose == Pose.FingersSpread)
+        {
+            Debug.Log("Shoot");
         }
 
 
@@ -140,7 +152,7 @@ public class Player_Move : MonoBehaviour
         Vector2 localScale = gameObject.transform.localScale;
         localScale.x *= -1;
         transform.localScale = localScale; // Simply puts the game character facing the other way.
-        Debug.Log("Flip");
+    //    Debug.Log("Flip");
 
     }
 
@@ -154,13 +166,49 @@ public class Player_Move : MonoBehaviour
 
     private void Jump()
     {
-       
+
+        Debug.Log("Facing right ---> " + facingRight);
+
+        if (!facingRight)
+        {
+
+             Vector2 jumpDirection = new Vector2(1000f, 100f);
+             float jumpFocre = 1200f;
+
+            jumpDirection.x = 100;
+
+            // rb.MovePosition(rb.position + new Vector2(moveX * Time.fixedDeltaTime, moveX * Time.fixedDeltaTime));
+            // rb.MovePosition(rb.position + new Vector2(0, 10));
+            Debug.Log("Yurt.");
+            //GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); // Character moves up.
+            // GetComponent<Rigidbody2D>().AddForce(Vector2.right * 10000); // Character moves up.
+            //  GetComponent<Rigidbody2D>().AddForce(Vector2.MoveTowards(player.transform.position, new Vector2(player.transform.position.x + 10, player.transform.position.y + 10), 10.0f) * 300); // Character moves up.
+            GetComponent<Rigidbody2D>().AddForce(jumpDirection.normalized * jumpFocre);
+
+        }
+        else
+        {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); // Character moves up.
+        }
 
-            isGrounded = false; // Character is not grounded and therefore cannot jump.
+        //GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); // Character moves up.
 
-          //  isGrounded = false; // Character is not grounded and therefore cannot jump. 
+        isGrounded = false; // Character is not grounded and therefore cannot jump.
+
+        //  isGrounded = false; // Character is not grounded and therefore cannot jump. 
     }
+
+    /* ---------------------------- Origional Jump() method.
+    private void Jump()
+    {
+
+        GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpPower); // Character moves up.
+
+        isGrounded = false; // Character is not grounded and therefore cannot jump.
+
+        //  isGrounded = false; // Character is not grounded and therefore cannot jump. 
+    }
+    */
 
     // Raycast method.
     void playerRaycast()
