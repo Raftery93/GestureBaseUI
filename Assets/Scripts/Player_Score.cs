@@ -37,6 +37,7 @@ public class Player_Score : MonoBehaviour
 
         if (isOver == true)
         {
+            Debug.Log((int)timeLeft);
             Debug.Log("----------------------------------------------------");
             CountScore();
             isOver = false;
@@ -70,12 +71,16 @@ public class Player_Score : MonoBehaviour
         score = (int)(timeLeft * 10); // calculate the current score with this formula
         Debug.Log("Score ---> " + score);
 
-       
 
+       // HighScore.setHighScore(sceneName, 10); // override the high score with the current score
         int highScore = HighScore.getHighScore(sceneName);// get a handle on the high socre for the active scene
         if (score > highScore) // if the current score is higher than the highscore
         {
-            HighScore.setHighScore(sceneName, score); // override the high score with the current score
+            if (highScore != 999)
+            {
+                HighScore.setHighScore(sceneName, score); // override the high score with the current score
+            }
+            
         }
     }
 
