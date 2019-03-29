@@ -23,7 +23,7 @@ public class BubbleMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Player_Score.isOver = false;
+       // Player_Score.isOver = false;
         movement = Input.GetAxisRaw("Horizontal") * playerSpeed;
         bubbles = GameObject.FindGameObjectsWithTag("Ball");
         if (bubbles.Length < 1)
