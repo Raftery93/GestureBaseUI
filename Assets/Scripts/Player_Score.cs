@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class Player_Score : MonoBehaviour
 {
     private float timeLeft = 100f;
-    public int score = 0;
+    public  int score = 0;
     public GameObject timeLeftUI;
     public GameObject playerScoreUI;
     public GameObject highScore;
+    public static bool isOver = false;
     string sceneName;
 
 
@@ -27,11 +28,18 @@ public class Player_Score : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
         timeLeftUI.gameObject.GetComponent<Text>().text = "Time Left: " + (int)timeLeft;
-        playerScoreUI.gameObject.GetComponent<Text>().text = "Score: " + score;
+      //  playerScoreUI.gameObject.GetComponent<Text>().text = "Score: " + score;
         if (timeLeft < 0.1f) // if the time runs out
         {
             SceneManager.LoadScene("Level");// Reload SampleScene.
 
+        }
+
+        if (isOver == true)
+        {
+            Debug.Log("----------------------------------------------------");
+            CountScore();
+            isOver = false;
         }
 
     }
@@ -45,20 +53,24 @@ public class Player_Score : MonoBehaviour
             Debug.Log("End.");
         }
 
-        if (trig.gameObject.tag == "Coin") // if the player hits a seed
-        {
-            score += 10; // increase the player score by 10
-            Destroy(trig.gameObject); // and destroy the seed to give the illusion that the hamster consumed it
-        }
+       // if (trig.gameObject.tag == "Coin") // if the player hits a seed
+        //{
+         //   score += 10; // increase the player score by 10
+           // Destroy(trig.gameObject); // and destroy the seed to give the illusion that the hamster consumed it
+       // }
     }
 
-    void CountScore()
+    public void CountScore()
     {
-        score = score + (int)(timeLeft * 10); // calculate the current score with this formula
-        Debug.Log("Score ---> " + score);
-
         Scene m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
         string sceneName = m_Scene.name; // get a handle on the active scenes name
+
+       
+        int score = 0;
+        score = (int)(timeLeft * 10); // calculate the current score with this formula
+        Debug.Log("Score ---> " + score);
+
+       
 
         int highScore = HighScore.getHighScore(sceneName);// get a handle on the high socre for the active scene
         if (score > highScore) // if the current score is higher than the highscore

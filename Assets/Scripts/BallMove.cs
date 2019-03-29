@@ -8,6 +8,9 @@ public class BallMove : MonoBehaviour
 
     public GameObject nextBall;
 
+    public GameObject[] balls;
+
+
 
     public Rigidbody2D rb;
 
@@ -19,6 +22,9 @@ public class BallMove : MonoBehaviour
 
     public void Split()
     {
+        balls = GameObject.FindGameObjectsWithTag("Ball");
+        //Debug.Log("Number of bubbles ---> " + balls.Length);
+
         if (nextBall != null)
         {
             GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
@@ -27,8 +33,13 @@ public class BallMove : MonoBehaviour
             ball1.GetComponent<BallMove>().startForce = new Vector2(2f, 5f);
             ball2.GetComponent<BallMove>().startForce = new Vector2(-2f, 5f);
         }
+      
 
         Destroy(gameObject);
+       // if (balls.Length == 1)
+      //  {
+           // Debug.Log("Game Over!");
+     //   }
     }
 
     // Update is called once per frame

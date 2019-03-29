@@ -15,12 +15,26 @@ public class BubbleMove : MonoBehaviour
     public Rigidbody2D rb;
 
     private float movement = 0f;
+
+
+    GameObject[] bubbles;
     
 
     // Update is called once per frame
     void Update()
     {
+        Player_Score.isOver = false;
         movement = Input.GetAxisRaw("Horizontal") * playerSpeed;
+        bubbles = GameObject.FindGameObjectsWithTag("Ball");
+        if (bubbles.Length < 1)
+        {
+            Debug.Log("End.");
+            //  score.CountScore();
+            Player_Score.isOver = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+           
+            //Debug.Log("Done");
+        }
     }
 
     void FixedUpdate()
