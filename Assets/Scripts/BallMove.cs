@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallMove : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class BallMove : MonoBehaviour
     public GameObject nextBall;
 
     public GameObject[] balls;
+    Scene m_Scene;
+    string sceneName;
+
+
 
 
 
@@ -18,28 +23,38 @@ public class BallMove : MonoBehaviour
     void Start()
     {
         rb.AddForce(startForce, ForceMode2D.Impulse);
+        m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
+        sceneName = m_Scene.name; // get a handle on the active scenes name
     }
 
     public void Split()
     {
-        balls = GameObject.FindGameObjectsWithTag("Ball");
-        //Debug.Log("Number of bubbles ---> " + balls.Length);
+       
+        
 
         if (nextBall != null)
         {
-            GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
-            GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
+            Debug.Log("Scene ---> " + sceneName);
 
-            ball1.GetComponent<BallMove>().startForce = new Vector2(2f, 5f);
-            ball2.GetComponent<BallMove>().startForce = new Vector2(-2f, 5f);
+            if (sceneName == "Bubble1" && nextBall.name == "Ball4")
+            {
+                //Do nothing.
+            }
+            else
+            {
+                GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
+                GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
+
+                ball1.GetComponent<BallMove>().startForce = new Vector2(2f, 5f);
+                ball2.GetComponent<BallMove>().startForce = new Vector2(-2f, 5f);
+            }
+         
+           
         }
       
 
         Destroy(gameObject);
-       // if (balls.Length == 1)
-      //  {
-           // Debug.Log("Game Over!");
-     //   }
+     
     }
 
     // Update is called once per frame

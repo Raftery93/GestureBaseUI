@@ -25,6 +25,7 @@ public class BubbleMove : MonoBehaviour
     {
        // Player_Score.isOver = false;
         movement = Input.GetAxisRaw("Horizontal") * playerSpeed;
+        /*
         bubbles = GameObject.FindGameObjectsWithTag("Ball");
         if (bubbles.Length < 1)
         {
@@ -35,6 +36,7 @@ public class BubbleMove : MonoBehaviour
            
             //Debug.Log("Done");
         }
+        */
     }
 
     void FixedUpdate()

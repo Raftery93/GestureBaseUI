@@ -13,6 +13,7 @@ public class Player_Score : MonoBehaviour
     public GameObject highScore;
     public static bool isOver = false;
     string sceneName;
+    GameObject[] bubbles;
 
 
     // Start is called before the first frame update
@@ -26,6 +27,16 @@ public class Player_Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        bubbles = GameObject.FindGameObjectsWithTag("Ball");
+
+        if (bubbles.Length < 1)
+        {
+            CountScore();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+
         timeLeft -= Time.deltaTime;
         timeLeftUI.gameObject.GetComponent<Text>().text = "Time Left: " + (int)timeLeft;
       //  playerScoreUI.gameObject.GetComponent<Text>().text = "Score: " + score;
@@ -53,12 +64,6 @@ public class Player_Score : MonoBehaviour
             CountScore();
             Debug.Log("End.");
         }
-
-       // if (trig.gameObject.tag == "Coin") // if the player hits a seed
-        //{
-         //   score += 10; // increase the player score by 10
-           // Destroy(trig.gameObject); // and destroy the seed to give the illusion that the hamster consumed it
-       // }
     }
 
     public void CountScore()
@@ -72,7 +77,7 @@ public class Player_Score : MonoBehaviour
         Debug.Log("Score ---> " + score);
 
 
-       // HighScore.setHighScore(sceneName, 10); // override the high score with the current score
+        //HighScore.setHighScore(sceneName, 10); // override the high score with the current score
         int highScore = HighScore.getHighScore(sceneName);// get a handle on the high socre for the active scene
         if (score > highScore) // if the current score is higher than the highscore
         {
