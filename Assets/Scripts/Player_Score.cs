@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Assets.Scripts;
 
 public class Player_Score : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class Player_Score : MonoBehaviour
     public static bool isOver = false;
     string sceneName;
     GameObject[] bubbles;
-
+    private LevelsManager manager;
 
     // Start is called before the first frame update
     void Start()
     {
+        manager = new LevelsManager();
+
         Scene m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
         sceneName = m_Scene.name; // get a handle on the active scene name
         highScore.gameObject.GetComponent<Text>().text = "High Score " + HighScore.getHighScore(sceneName); // load the highscore from the player prefs
@@ -43,7 +46,8 @@ public class Player_Score : MonoBehaviour
         if (bubbles.Length < 1)
         {
             CountScore();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            manager.ChangeLevel(Levels.Levels_Menu);
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
 
@@ -97,6 +101,8 @@ public class Player_Score : MonoBehaviour
             }
             
         }
+
+        
     }
 
 }

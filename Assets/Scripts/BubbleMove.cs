@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
+using Assets.Scripts;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BubbleMove : MonoBehaviour
 {
+    private LevelsManager manager;
     public GameObject myo = null;
     public float playerSpeed = 7f;
 
@@ -18,25 +20,19 @@ public class BubbleMove : MonoBehaviour
 
 
     GameObject[] bubbles;
-    
+
+    void Start()
+    {
+        manager = new LevelsManager();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
        // Player_Score.isOver = false;
         movement = Input.GetAxisRaw("Horizontal") * playerSpeed;
-        /*
-        bubbles = GameObject.FindGameObjectsWithTag("Ball");
-        if (bubbles.Length < 1)
-        {
-            Debug.Log("End.");
-            //  score.CountScore();
-            Player_Score.isOver = true;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-           
-            //Debug.Log("Done");
-        }
-        */
+       
     }
 
     void FixedUpdate()
@@ -84,7 +80,8 @@ public class BubbleMove : MonoBehaviour
         if (col.collider.tag == "Ball")
         {
             Debug.Log("GAME OVER!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
         }
     }
 
