@@ -22,6 +22,11 @@ public class Player_Score : MonoBehaviour
         Scene m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
         sceneName = m_Scene.name; // get a handle on the active scene name
         highScore.gameObject.GetComponent<Text>().text = "High Score " + HighScore.getHighScore(sceneName); // load the highscore from the player prefs
+
+        if (sceneName == "Bubble4")
+        {
+            timeLeft = 130f;
+        }
     }
 
     // Update is called once per frame
