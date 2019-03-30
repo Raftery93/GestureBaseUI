@@ -40,7 +40,17 @@ public class BallMove : MonoBehaviour
             {
                 //Do nothing.
             }
-            else
+            else if (sceneName == "Bubble3" && nextBall.name == "Ball2")
+            {
+                GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
+                GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
+                GameObject ball3 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
+
+                ball1.GetComponent<BallMove>().startForce = new Vector2(2f, 5f);
+                ball2.GetComponent<BallMove>().startForce = new Vector2(-2f, 5f);
+                ball3.GetComponent<BallMove>().startForce = new Vector2(-3f, 5f);
+            }
+            else // The default is level Bubble2.
             {
                 GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
                 GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
