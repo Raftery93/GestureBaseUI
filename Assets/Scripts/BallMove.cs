@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class BallMove : MonoBehaviour
 {
@@ -34,13 +35,14 @@ public class BallMove : MonoBehaviour
 
         if (nextBall != null)
         {
-            Debug.Log("Scene ---> " + sceneName);
+           // Debug.Log("Scene ---> " + sceneName);
+            
 
-            if (sceneName == "Bubble1" && nextBall.name == "Ball4")
+            if (sceneName == Levels.Level_1 && nextBall.name == Bubbles.Bubble_4)
             {
                 //Do nothing.
             }
-            else if (sceneName == "Bubble3" && nextBall.name == "Ball2")
+            else if (sceneName == Levels.Level_3 && nextBall.name == Bubbles.Bubble_2)
             {
                 GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
                 GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
@@ -51,7 +53,7 @@ public class BallMove : MonoBehaviour
                 ball3.GetComponent<BallMove>().startForce = new Vector2(-3f, 5f);
             }
 
-            else if (sceneName == "Bubble4" && (nextBall.name == "Ball2" || nextBall.name == "Ball4"))
+            else if (sceneName == Levels.Level_4 && (nextBall.name == Bubbles.Bubble_2 || nextBall.name == Bubbles.Bubble_4))
             {
                 GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
                 GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
@@ -62,7 +64,7 @@ public class BallMove : MonoBehaviour
                 ball3.GetComponent<BallMove>().startForce = new Vector2(-3f, 5f);
             }
 
-            else if (sceneName == "Bubble5")
+            else if (sceneName == Levels.Level_5)
             {
                 GameObject ball1 = Instantiate(nextBall, rb.position + Vector2.right / 4f, Quaternion.identity);
                 GameObject ball2 = Instantiate(nextBall, rb.position + Vector2.left / 4f, Quaternion.identity);
