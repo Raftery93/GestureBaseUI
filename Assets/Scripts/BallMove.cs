@@ -48,8 +48,7 @@ public class BallMove : MonoBehaviour
                 ball1.GetComponent<BallMove>().startForce = new Vector2(2f, 5f);
                 ball2.GetComponent<BallMove>().startForce = new Vector2(-2f, 5f);
             }
-         
-           
+          
         }
       
 
