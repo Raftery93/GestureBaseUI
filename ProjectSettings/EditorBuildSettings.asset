@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Bubble4.unity
     guid: 21d3c5ba0a2995541899c427e6918332
   - enabled: 1
+    path: Assets/Scenes/LevelsMenu.unity
+    guid: db1f03245b5650943b00b1d099d9d928
+  - enabled: 1
     path: Assets/Scenes/Bubble5.unity
     guid: 4eb6e3efff61fd847838a57c04b90554
   m_configObjects: {}
