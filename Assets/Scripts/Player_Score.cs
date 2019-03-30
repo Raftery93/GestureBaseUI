@@ -27,6 +27,11 @@ public class Player_Score : MonoBehaviour
         {
             timeLeft = 130f;
         }
+
+        if (sceneName == "Bubble5")
+        {
+            timeLeft = 300f;
+        }
     }
 
     // Update is called once per frame
