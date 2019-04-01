@@ -5,7 +5,7 @@ using UnityEngine.Windows.Speech;
 using System;
 using System.Linq;
 
-public class VoiceControl : MonoBehaviour
+public class VoiceMovement : MonoBehaviour
 {
     private KeywordRecognizer keywordRecognizer;
 
