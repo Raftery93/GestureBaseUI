@@ -24,7 +24,7 @@ public class BubbleMove : MonoBehaviour
     void Start()
     {
         manager = new LevelsManager();
-        myo = GameObject.FindWithTag("myo");
+        myo = GameObject.FindWithTag("myo"); // ------------------------
 
     }
 
@@ -39,8 +39,8 @@ public class BubbleMove : MonoBehaviour
 
     void FixedUpdate()
     {
-       // Move();
-        MyoMove();
+        Move();
+        MyoMove(); //---------------------------------
     }
 
     void Move()
