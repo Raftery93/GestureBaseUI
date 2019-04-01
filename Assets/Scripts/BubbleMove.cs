@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 public class BubbleMove : MonoBehaviour
 {
     private LevelsManager manager;
-    public GameObject myo = null;
+    private GameObject myo = null;
     public float playerSpeed = 7f;
 
     public Rigidbody2D rb;
@@ -24,6 +24,8 @@ public class BubbleMove : MonoBehaviour
     void Start()
     {
         manager = new LevelsManager();
+        myo = GameObject.FindWithTag("myo");
+
     }
 
 
