@@ -21,10 +21,13 @@ public class BubbleMove : MonoBehaviour
 
     GameObject[] bubbles;
 
+    public static int lives;
+
     void Start()
     {
         manager = new LevelsManager();
         myo = GameObject.FindWithTag("myo"); // ------------------------
+        lives = 3;
 
     }
 
@@ -81,10 +84,29 @@ public class BubbleMove : MonoBehaviour
     {
         if (col.collider.tag == "Ball")
         {
-            Debug.Log("GAME OVER!");
+            //lives --;
+            if(lives < 1){
+
+            Debug.Log("HIT!");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
+            }
+
+            lives--;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D col){
+
+         if (col.tag == "Ball"){
+
+           // Debug.Log("Trigger!");
+           if(lives <= 1){
+               manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
+           }
+            lives--;
+         }
+        
     }
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
