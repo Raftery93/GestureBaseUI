@@ -53,7 +53,7 @@ public class Player_Score : MonoBehaviour
 
         timeLeft -= Time.deltaTime;
         timeLeftUI.gameObject.GetComponent<Text>().text = "Time Left: " + (int)timeLeft;
-      //  playerScoreUI.gameObject.GetComponent<Text>().text = "Score: " + score;
+        playerScoreUI.gameObject.GetComponent<Text>().text = "Lives: " + BubbleMove.lives;
         if (timeLeft < 0.1f) // if the time runs out
         {
             SceneManager.LoadScene("Level");// Reload SampleScene.
