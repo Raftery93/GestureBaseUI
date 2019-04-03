@@ -18,6 +18,7 @@ public class BubbleMove : MonoBehaviour
 
     private float movement = 0f;
 
+    private static int lives = 3;
 
     GameObject[] bubbles;
 
@@ -25,7 +26,7 @@ public class BubbleMove : MonoBehaviour
     {
         manager = new LevelsManager();
         myo = GameObject.FindWithTag("myo"); // ------------------------
-
+        lives = 3;
     }
 
 
@@ -81,10 +82,18 @@ public class BubbleMove : MonoBehaviour
     {
         if (col.collider.tag == "Ball")
         {
+            Debug.Log("Lives:" + lives);
+            lives -= 1;
+
+            if(lives < 1){
+
             Debug.Log("GAME OVER!");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
+
+            }
         }
+
     }
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
