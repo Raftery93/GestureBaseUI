@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Ball
   - myo
+  - heart
   layers:
   - Default
   - TransparentFX

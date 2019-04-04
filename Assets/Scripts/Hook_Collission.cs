@@ -33,5 +33,11 @@ public class Hook_Collission : MonoBehaviour
            
            
         }
+
+        if(col.tag == "heart"){
+            Debug.Log("Ball ---> collision with heart");
+            Destroy(col.gameObject);
+            BubbleMove.lives++;
+        }
     }
 }

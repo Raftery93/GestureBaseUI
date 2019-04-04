@@ -18,7 +18,7 @@ public class BubbleMove : MonoBehaviour
 
     private float movement = 0f;
 
-    private static int lives = 3;
+    //private static int lives = 3;
 
     GameObject[] bubbles;
 
@@ -29,10 +29,6 @@ public class BubbleMove : MonoBehaviour
         manager = new LevelsManager();
         myo = GameObject.FindWithTag("myo"); // ------------------------
         lives = 3;
-<<<<<<< HEAD
-=======
-
->>>>>>> a8cd8b6c2366282fb562e6bd2069130c8ccce14d
     }
 
 
@@ -88,18 +84,6 @@ public class BubbleMove : MonoBehaviour
     {
         if (col.collider.tag == "Ball")
         {
-<<<<<<< HEAD
-            Debug.Log("Lives:" + lives);
-            lives -= 1;
-
-            if(lives < 1){
-
-            Debug.Log("GAME OVER!");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
-
-            }
-=======
             //lives --;
             if(lives < 1){
 
@@ -109,7 +93,6 @@ public class BubbleMove : MonoBehaviour
             }
 
             lives--;
->>>>>>> a8cd8b6c2366282fb562e6bd2069130c8ccce14d
         }
 
     }
