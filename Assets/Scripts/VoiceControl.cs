@@ -38,7 +38,7 @@ public class VoiceControl : MonoBehaviour
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
         keywordRecognizer.Start();
-Debug.Log("Speech started");
+        Debug.Log("Speech started");
        // keywordRecognizer.Stop();
 
     }
