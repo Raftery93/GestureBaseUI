@@ -14,5 +14,6 @@ namespace Assets.Scripts
         public const string Level_5 = "Bubble5";
         public const string Main_Menu = "MainMenu";
         public const string Levels_Menu = "LevelsMenu";
+        public const string Help = "Help";
     }
 }

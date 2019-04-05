@@ -24,4 +24,8 @@ public class MainMenu : MonoBehaviour
     {
         levelManager.QuitGame();// When the user clicks "QUIT".
     }
+
+    public void Help(){
+        levelManager.ChangeLevel(Levels.Help);// Change level when this method is triggered.
+    }
 }

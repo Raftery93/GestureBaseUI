@@ -20,7 +20,7 @@ public class SpawnHeart : MonoBehaviour
     void Start () {
 
         randomTime = RandomNumber(10, 80);
-        //randomTime = 95;
+        randomTime = 95;
         //SpawnHeartPos();
         Debug.Log("RandomTime: " + randomTime);
         //Get object for platform

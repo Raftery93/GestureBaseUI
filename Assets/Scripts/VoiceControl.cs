@@ -32,6 +32,7 @@ public class VoiceControl : MonoBehaviour
         actions.Add("four", LevelFour);
         actions.Add("level five", LevelFive);
         actions.Add("five", LevelFive);
+        actions.Add("help", Help);
         //actions.Add("down", Down);
         //actions.Add("back", Back);
 
@@ -63,6 +64,7 @@ public class VoiceControl : MonoBehaviour
 
     private void Quit(){
         Debug.Log("Quit!!");
+        keywordRecognizer.Stop();
     }
 
     private void MainMenu(){
@@ -87,5 +89,9 @@ public class VoiceControl : MonoBehaviour
 
     private void LevelFive(){
         SceneManager.LoadScene("Bubble5");
+    }
+
+    private void Help(){
+        SceneManager.LoadScene("help");
     }
 }

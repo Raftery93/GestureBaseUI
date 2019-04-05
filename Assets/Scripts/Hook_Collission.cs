@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Hook_Collission : MonoBehaviour
 {
 
+    public AudioSource popSound;
+    public AudioSource lifeSound;
 
     public static int i = 0;
     Scene m_Scene;
@@ -13,7 +15,8 @@ public class Hook_Collission : MonoBehaviour
 
     void Start()
     {
-        
+        popSound = GetComponent<AudioSource>();
+        lifeSound = GetComponent<AudioSource>();
         m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
         sceneName = m_Scene.name; // get a handle on the active scenes name
     }
@@ -30,12 +33,14 @@ public class Hook_Collission : MonoBehaviour
 
             Debug.Log("Ball ---> " + i);
             col.GetComponent<BallMove>().Split();
+            popSound.Play();
            
            
         }
 
         if(col.tag == "heart"){
             Debug.Log("Ball ---> collision with heart");
+            lifeSound.Play();
             Destroy(col.gameObject);
             BubbleMove.lives++;
         }
