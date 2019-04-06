@@ -33,14 +33,17 @@ public class Hook_Collission : MonoBehaviour
 
           //  Debug.Log("Ball ---> " + i);
             col.GetComponent<BallMove>().Split();
-            popSound.Play();
+           // popSound.Play();
+           FindObjectOfType<AudioManager>().Play("pop");
            
            
         }
 
         if(col.tag == "heart"){
-            Debug.Log("Ball ---> collision with heart");
+        //    Debug.Log("Ball ---> collision with heart");
             //lifeSound.Play();
+
+            FindObjectOfType<AudioManager>().Play("life");
             Destroy(col.gameObject);
             BubbleMove.lives++;
         }

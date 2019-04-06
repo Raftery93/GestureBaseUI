@@ -27,6 +27,7 @@ public class Chain : MonoBehaviour
         if (IsFired)
         {
             transform.localScale = transform.localScale + Vector3.up * Time.deltaTime * speed;
+            FindObjectOfType<AudioManager>().Play("shoot");
         }
         else
         {

@@ -43,7 +43,7 @@ public class SpawnHeart : MonoBehaviour
 
         if(randomTime == (int)timer && isSpawned == 1){
             isSpawned = 0;
-            Debug.Log("SPAWN!!!!!!");
+           // Debug.Log("SPAWN!!!!!!");
             SpawnHeartPos();
         }
         //If Random time

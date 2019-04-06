@@ -26,6 +26,7 @@ public class BubbleMove : MonoBehaviour
 
     void Start()
     {
+       
         manager = new LevelsManager();
         myo = GameObject.FindWithTag("myo"); // ------------------------
         lives = 3;
@@ -84,6 +85,9 @@ public class BubbleMove : MonoBehaviour
     {
         if (col.collider.tag == "Ball")
         {
+            Debug.Log("Ouch");
+            FindObjectOfType<AudioManager>().Play("ouch");
+            
             //lives --;
             if(lives < 1){
 
@@ -92,12 +96,16 @@ public class BubbleMove : MonoBehaviour
             manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
             }
 
+            Debug.Log("Lives ---> " + lives);
             lives--;
+            Debug.Log("Lives ---> " + lives);
         }
 
     }
 
     void OnTriggerEnter2D(Collider2D col){
+
+        FindObjectOfType<AudioManager>().Play("ouch");
 
          if (col.tag == "Ball"){
 
