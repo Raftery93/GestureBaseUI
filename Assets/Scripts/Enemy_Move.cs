@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class Enemy_Move : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class Enemy_Move : MonoBehaviour
         if (hit.distance < hitDistance)
         {
             FlipEnemy();
-            if (hit.collider.tag == "Player") // If the enemy hits the player.
+            if (hit.collider.tag == Tags.Player) // If the enemy hits the player.
             {
                
                 Destroy(hit.collider.gameObject); // Kill the player and redirect to levels menu.

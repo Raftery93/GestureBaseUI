@@ -26,12 +26,12 @@ public class Player_Score : MonoBehaviour
         sceneName = m_Scene.name; // get a handle on the active scene name
         highScore.gameObject.GetComponent<Text>().text = "High Score " + HighScore.getHighScore(sceneName); // load the highscore from the player prefs
 
-        if (sceneName == "Bubble4")
+        if (sceneName == Levels.Level_4)
         {
             timeLeft = 130f;
         }
 
-        if (sceneName == "Bubble5")
+        if (sceneName == Levels.Level_5)
         {
             timeLeft = 300f;
         }
@@ -41,7 +41,7 @@ public class Player_Score : MonoBehaviour
     void Update()
     {
 
-        bubbles = GameObject.FindGameObjectsWithTag("Ball");
+        bubbles = GameObject.FindGameObjectsWithTag(Tags.Ball);
 
         if (bubbles.Length < 1)
         {
@@ -56,7 +56,7 @@ public class Player_Score : MonoBehaviour
         playerScoreUI.gameObject.GetComponent<Text>().text = "Lives: " + BubbleMove.lives;
         if (timeLeft < 0.1f) // if the time runs out
         {
-            SceneManager.LoadScene("Level");// Reload SampleScene.
+            SceneManager.LoadScene(Levels.Levels_Menu);// Reload LevelsMenu.
 
         }
 

@@ -4,9 +4,15 @@ using UnityEngine;
 using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
+using Assets.Scripts;
 
 public class Player_Move : MonoBehaviour
 {
+
+    /*
+    This script is not being used in the Bubble Struggle game. We opted to leave this script in the 
+    project in case we needed to reference it for anything.
+     */
 
     // Myo game object to connect with.
     // This object must have a ThalmicMyo script attached.
@@ -158,7 +164,7 @@ public class Player_Move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "ground")
+        if (col.gameObject.tag == Tags.Ground)
         {
             isGrounded = true;
         }
@@ -215,12 +221,12 @@ public class Player_Move : MonoBehaviour
     {
 
         RaycastHit2D rayUp = Physics2D.Raycast(transform.position, Vector2.up);
-        if (rayUp != null && rayUp.collider != null && rayUp.distance < distanceToBottomPlayer && rayUp.collider.tag == "BreakBox")
+        if (rayUp != null && rayUp.collider != null && rayUp.distance < distanceToBottomPlayer && rayUp.collider.tag == Tags.BreakBox)
         {
             Destroy(rayUp.collider.gameObject); // To destroy the breakable boxes.
         }
         RaycastHit2D rayDown = Physics2D.Raycast(transform.position, Vector2.down); // To kill an enemy when jumped on.
-        if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag == "Enemy")
+        if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag == Tags.Enemy)
         {
             GetComponent<Rigidbody2D>().AddForce(Vector2.up * 1000);
             rayDown.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 200);// Move to the right after hit enemy.
@@ -230,7 +236,7 @@ public class Player_Move : MonoBehaviour
             rayDown.collider.gameObject.GetComponent<Enemy_Move>().enabled = false;
         }
 
-        if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag != "Enemy")
+        if (rayDown != null && rayDown.collider != null && rayDown.distance < distanceToBottomPlayer && rayDown.collider.tag != Tags.Enemy)
         {
             isGrounded = true; // So the player can bounce on the enemy
         }

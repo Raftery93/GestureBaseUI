@@ -5,14 +5,19 @@ using UnityEngine.Windows.Speech;
 using System;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class VoiceControl : MonoBehaviour
 {
+
+    private LevelsManager manager;
     private KeywordRecognizer keywordRecognizer;
 
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
     void Start(){
+        manager = new LevelsManager();
+
         actions.Add("right", Right);
         actions.Add("left", Left);
         actions.Add("play", Play);
@@ -59,7 +64,7 @@ public class VoiceControl : MonoBehaviour
     }
 
     private void Play(){
-        SceneManager.LoadScene("LevelsMenu");
+       manager.ChangeLevel(Levels.Levels_Menu);
     }
 
     private void Quit(){
@@ -68,30 +73,30 @@ public class VoiceControl : MonoBehaviour
     }
 
     private void MainMenu(){
-        SceneManager.LoadScene("MainMenu");
+        manager.ChangeLevel(Levels.Main_Menu);
     }
 
     private void LevelOne(){
-        SceneManager.LoadScene("Bubble1");
+        manager.ChangeLevel(Levels.Level_1);
     }
 
     private void LevelTwo(){
-        SceneManager.LoadScene("Bubble2");
+        manager.ChangeLevel(Levels.Level_2);
     }
 
     private void LevelThree(){
-        SceneManager.LoadScene("Bubble3");
+        manager.ChangeLevel(Levels.Level_3);
     }
 
     private void LevelFour(){
-        SceneManager.LoadScene("Bubble4");
+        manager.ChangeLevel(Levels.Level_4);
     }
 
     private void LevelFive(){
-        SceneManager.LoadScene("Bubble5");
+        manager.ChangeLevel(Levels.Level_5);
     }
 
     private void Help(){
-        SceneManager.LoadScene("help");
+        manager.ChangeLevel(Levels.Help);
     }
 }

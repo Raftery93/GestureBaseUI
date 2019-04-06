@@ -24,29 +24,20 @@ public class Hook_Collission : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         
-
-        // Use an i flag.
         Chain.IsFired = false;
 
-        if (col.tag == "Ball")
+        if (col.tag == Tags.Ball)
         {
-          
-
-          //  Debug.Log("Ball ---> " + i);
+        
             col.GetComponent<BallMove>().Split();
-           // popSound.Play();
-           FindObjectOfType<AudioManager>().Play(Audio.Pop);
-           
-           
+            FindObjectOfType<AudioManager>().Play(Audio.Pop);
+               
         }
 
-        if(col.tag == "heart"){
-        //    Debug.Log("Ball ---> collision with heart");
-            //lifeSound.Play();
-
-            FindObjectOfType<AudioManager>().Play(Audio.Life);
-            Destroy(col.gameObject);
-            BubbleMove.lives++;
+        if(col.tag == Tags.Heart){
+           FindObjectOfType<AudioManager>().Play(Audio.Life);
+           Destroy(col.gameObject);
+           BubbleMove.lives++;
         }
     }
 }

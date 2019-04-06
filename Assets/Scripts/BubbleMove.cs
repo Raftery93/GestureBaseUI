@@ -4,7 +4,6 @@ using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using Assets.Scripts;
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +27,7 @@ public class BubbleMove : MonoBehaviour
     {
        
         manager = new LevelsManager();
-        myo = GameObject.FindWithTag("myo"); // ------------------------
+        myo = GameObject.FindWithTag(Tags.Myo); // ------------------------
         lives = 3;
     }
 
@@ -83,7 +82,7 @@ public class BubbleMove : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.collider.tag == "Ball")
+        if (col.collider.tag == Tags.Ball)
         {
           
             FindObjectOfType<AudioManager>().Play(Audio.Ouch);
@@ -102,11 +101,10 @@ public class BubbleMove : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
 
-        FindObjectOfType<AudioManager>().Play(Audio.Ouch);
+        
 
-         if (col.tag == "Ball"){
-
-           // Debug.Log("Trigger!");
+         if (col.tag == Tags.Ball){
+           FindObjectOfType<AudioManager>().Play(Audio.Ouch);
            if(lives <= 1){
                manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
            }

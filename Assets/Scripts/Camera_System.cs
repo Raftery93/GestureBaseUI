@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class Camera_System : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Camera_System : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); // Find the object to clamp the camera to.
+        player = GameObject.FindGameObjectWithTag(Tags.Player); // Find the object to clamp the camera to.
     }
 
    

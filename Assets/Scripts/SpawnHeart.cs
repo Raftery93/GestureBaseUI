@@ -20,48 +20,22 @@ public class SpawnHeart : MonoBehaviour
     void Start () {
 
         randomTime = RandomNumber(10, 80);
-        randomTime = 95; // For testing.
-        //SpawnHeartPos();
+        // randomTime = 95; // For testing.
         Debug.Log("RandomTime: " + randomTime);
-        //Get object for platform
-        //heartWidth = spawnObject.GetComponent<BoxCollider2D>().size.y;
-
-        //spawnObject.transform.position = Random.insideUnitCircle * 5;
+       
     }      
 
     // Update is called once per frame
     void Update()
     {
-         //Get random x value between boundaries
-        //int randomXPos = RandomNumber(-4, 6);
-
-
-
+       
         timer -= Time.deltaTime;
-
-        //Debug.Log("RandomTime: " + randomTime + " Timer: " + timer);
 
         if(randomTime == (int)timer && isSpawned == 1){
             isSpawned = 0;
-           // Debug.Log("SPAWN!!!!!!");
             SpawnHeartPos();
         }
-        //If Random time
-        //if (true)
-        //{
-            //Create switch statement for 3 platform positions
-            //Create 1 or 2 platforms (Random)
-
-            //Change position on x axis (Random number)
-         //   transform.position = new Vector2(randomXPos, 0);
-
-            //Create platforms
-         //   Instantiate(spawnObject, transform.position, transform.rotation);
-
-       // }
-        //Destroy heart after 5 sec
-       // Destroy(spawnObject, 5);
-        
+      
     }
 
     // Generate a random number between two numbers
