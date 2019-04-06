@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Assets.Scripts;
 
 public class Hook_Collission : MonoBehaviour
 {
@@ -34,7 +35,7 @@ public class Hook_Collission : MonoBehaviour
           //  Debug.Log("Ball ---> " + i);
             col.GetComponent<BallMove>().Split();
            // popSound.Play();
-           FindObjectOfType<AudioManager>().Play("pop");
+           FindObjectOfType<AudioManager>().Play(Audio.Pop);
            
            
         }
@@ -43,7 +44,7 @@ public class Hook_Collission : MonoBehaviour
         //    Debug.Log("Ball ---> collision with heart");
             //lifeSound.Play();
 
-            FindObjectOfType<AudioManager>().Play("life");
+            FindObjectOfType<AudioManager>().Play(Audio.Life);
             Destroy(col.gameObject);
             BubbleMove.lives++;
         }

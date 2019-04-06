@@ -85,27 +85,24 @@ public class BubbleMove : MonoBehaviour
     {
         if (col.collider.tag == "Ball")
         {
-            Debug.Log("Ouch");
-            FindObjectOfType<AudioManager>().Play("ouch");
-            
-            //lives --;
+          
+            FindObjectOfType<AudioManager>().Play(Audio.Ouch);
             if(lives < 1){
 
-            Debug.Log("HIT!");
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
+                Debug.Log("HIT!");
+                manager.ChangeLevel(Levels.Levels_Menu); // So any time the player dies, they get redirected back to the levels menu.
+
             }
 
-            Debug.Log("Lives ---> " + lives);
             lives--;
-            Debug.Log("Lives ---> " + lives);
+            
         }
 
     }
 
     void OnTriggerEnter2D(Collider2D col){
 
-        FindObjectOfType<AudioManager>().Play("ouch");
+        FindObjectOfType<AudioManager>().Play(Audio.Ouch);
 
          if (col.tag == "Ball"){
 

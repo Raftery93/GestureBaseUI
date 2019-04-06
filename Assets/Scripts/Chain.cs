@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts;
 
 public class Chain : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class Chain : MonoBehaviour
         if (IsFired)
         {
             transform.localScale = transform.localScale + Vector3.up * Time.deltaTime * speed;
-            FindObjectOfType<AudioManager>().Play("shoot");
+            FindObjectOfType<AudioManager>().Play(Audio.Shoot);
         }
         else
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.Audio;
 using UnityEngine;
 using System;
+using Assets.Scripts;
 
 public class AudioManager : MonoBehaviour
 {
@@ -37,8 +38,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // sourceName = "MainTheme";
-        Play("theme"); // Anytime the audion manager is in a level, automatically play the main theme at the start of the level.
+        Play(Audio.Theme); // Anytime the audion manager is in a level, automatically play the main theme at the start of the level.
     }
 
     public void Play(string name)
@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name); // Call back function for finding the audio source in the array.
         if (s == null)
         {
-            Debug.Log("Sound " + name + " does not exist");
+           // Debug.Log("Sound " + name + " does not exist");
             return;
         }
         s.source.Play(); // Play the audio.
@@ -55,9 +55,4 @@ public class AudioManager : MonoBehaviour
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
