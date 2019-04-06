@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 
+
+/*
+This class is no longer significant because the camera on the new game does not need
+to follow the player.
+ */
 public class Camera_System : MonoBehaviour
 {
 

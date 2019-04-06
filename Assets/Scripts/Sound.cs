@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
+/*
+Class that abstracts the details of a audio clip for eace access.
+ */
 [System.Serializable]
 public class Sound 
 {

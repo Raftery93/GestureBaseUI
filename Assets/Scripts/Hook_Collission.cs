@@ -4,40 +4,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets.Scripts;
 
-public class Hook_Collission : MonoBehaviour
+public class Hook_Collission : MonoBehaviour // Class to control what happens when the hook collides with something.
 {
 
-    public AudioSource popSound;
-    public AudioSource lifeSound;
-
-    public static int i = 0;
-    Scene m_Scene;
-    string sceneName;
+    Scene m_Scene; // To get a reference to the current scene.
+    string sceneName; // To get a handle on the current scene's name.
 
     void Start()
     {
-        popSound = GetComponent<AudioSource>();
-        lifeSound = GetComponent<AudioSource>();
-        m_Scene = SceneManager.GetActiveScene(); // get a handle on the active scene
-        sceneName = m_Scene.name; // get a handle on the active scenes name
+        m_Scene = SceneManager.GetActiveScene(); // Get a handle on the active scene.
+        sceneName = m_Scene.name; // Get a handle on the active scenes name.
     }
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter2D(Collider2D col) // When something triggers the collider on the hook.
     {
         
-        Chain.IsFired = false;
+        Chain.IsFired = false; // Stop the chain firing.
 
-        if (col.tag == Tags.Ball)
+        if (col.tag == Tags.Ball) // If it has collided with a bubble.
         {
         
-            col.GetComponent<BallMove>().Split();
-            FindObjectOfType<AudioManager>().Play(Audio.Pop);
+            col.GetComponent<BallMove>().Split(); // Split the bubble.
+            FindObjectOfType<AudioManager>().Play(Audio.Pop); // Play the "Pop" audio clip.
                
         }
 
-        if(col.tag == Tags.Heart){
-           FindObjectOfType<AudioManager>().Play(Audio.Life);
-           Destroy(col.gameObject);
-           BubbleMove.lives++;
+        if(col.tag == Tags.Heart){ // If it has collided with the heart.
+           FindObjectOfType<AudioManager>().Play(Audio.Life); // Play the "Life" audio clip.
+           Destroy(col.gameObject); // Destroy the heart.
+           BubbleMove.lives++; // Increment the lives by one.
         }
     }
 }

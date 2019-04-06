@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+This class is no longer significant because the the new game has different lose 
+conditions.
+ */
 public class Player_Health : MonoBehaviour
 {
     public int deathPoint;

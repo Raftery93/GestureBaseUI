@@ -7,12 +7,15 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using Assets.Scripts;
 
-public class VoiceControl : MonoBehaviour
+public class VoiceControl : MonoBehaviour // Class to control the voice recognition for navigation.
 {
 
     private LevelsManager manager;
     private KeywordRecognizer keywordRecognizer;
 
+    /*
+    Create a dictionary to map the included words/phrases to actions.
+     */
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
 
     void Start(){
@@ -38,14 +41,11 @@ public class VoiceControl : MonoBehaviour
         actions.Add("level five", LevelFive);
         actions.Add("five", LevelFive);
         actions.Add("help", Help);
-        //actions.Add("down", Down);
-        //actions.Add("back", Back);
-
+       
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
         keywordRecognizer.Start();
         Debug.Log("Speech started");
-       // keywordRecognizer.Stop();
 
     }
 

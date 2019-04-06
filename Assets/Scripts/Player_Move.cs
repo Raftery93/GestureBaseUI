@@ -6,6 +6,11 @@ using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using Assets.Scripts;
 
+
+/*
+This class is no longer significant because the player is controlled in a different way in the
+new game.
+ */
 public class Player_Move : MonoBehaviour
 {
 
@@ -242,7 +247,7 @@ public class Player_Move : MonoBehaviour
         }
     }
 
-//>>>>>>> d944c4ce6604680eca92ac7efdb8c11f64ff7f04
+
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
     // recognized.

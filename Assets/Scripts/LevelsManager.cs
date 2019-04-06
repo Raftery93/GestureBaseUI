@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelsManager : MonoBehaviour
+public class LevelsManager : MonoBehaviour // Class to control the changing of scenes.
 {
     public void ChangeLevel(string level)
     {

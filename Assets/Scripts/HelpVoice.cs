@@ -6,23 +6,26 @@ using UnityEngine.Windows.Speech;
 using System;
 using System.Linq;
 
-public class HelpVoice : MonoBehaviour
+public class HelpVoice : MonoBehaviour // Class that controls the speech recognition on the help scene.
 {
 
      private LevelsManager levelManager; // Get handle on LevelManager object.
 
-    private KeywordRecognizer keywordRecognizer;
+    private KeywordRecognizer keywordRecognizer; // Get a reference to the Windows KeywordRecognizer.
 
-    private Dictionary<string, Action> actions = new Dictionary<string, Action>();
+    /*
+    Create a dictionary to store the word/phrase to action mappings.
+     */
+    private Dictionary<string, Action> actions = new Dictionary<string, Action>(); 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        actions.Add("back", Return);
+        actions.Add("back", Return); // Of the user says "back", call the Return() method.
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
-        keywordRecognizer.Start();
+        keywordRecognizer.Start(); // Start listening for words/phrases.
         Debug.Log("Speech started");
         levelManager = new LevelsManager();// Create new instance of level manager.
     }

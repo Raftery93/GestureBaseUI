@@ -6,7 +6,7 @@ using UnityEngine.Windows.Speech;
 using System.Linq;
 using System;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour { // Class to control what happens in the in-game pause menu.
 
     public static bool IsPaused = false;
     public GameObject pauseMenuUI;

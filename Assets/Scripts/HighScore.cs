@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighScore : MonoBehaviour
+public class HighScore : MonoBehaviour // Class to access the High score in local storage.
 {
 
 

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 
+/*
+This class is no longer significant because the new game does not contain an enemy object.
+ */
 public class Enemy_Move : MonoBehaviour
 {
 

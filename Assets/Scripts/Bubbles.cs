@@ -5,6 +5,10 @@ using System.Text;
 
 namespace Assets.Scripts
 {
+    /*
+    This class simply abstracts the 4 types of bubbles to a single class 
+    for easy referecnes.
+     */
     public static class Bubbles
     {
         public const string Bubble_1 = "Ball1";

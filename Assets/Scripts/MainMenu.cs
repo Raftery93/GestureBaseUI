@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour // Class to control what happens on the main menu.
 {
 
     private LevelsManager levelManager; // Get handle on LevelManager object.

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Assets.Scripts
 {
+    /*
+    Simple class that abstracts the names of the scenes to a single class for easy access.
+     */
     public static class Levels
     {
         public const string Level_1 = "Bubble1";
