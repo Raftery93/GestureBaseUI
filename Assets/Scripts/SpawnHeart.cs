@@ -21,7 +21,7 @@ public class SpawnHeart : MonoBehaviour // Class to control the Heart object.
     void Start () {
 
         randomTime = RandomNumber(10, 80); // Get a random time.
-        randomTime = 95;
+        //randomTime = 95;
         Debug.Log("RandomTime: " + randomTime);
        
     }      
