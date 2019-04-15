@@ -1,0 +1,27 @@
+Project Title: Bubble Struggle
+
+Team Members: Gary Connelly & Conor Raftery
+
+Git Repositories (with documentation on Github): https://github.com/Raftery93/GestureBaseUI
+
+Link to video (Link is also in Github Readme): https://www.youtube.com/watch?v=CsmlU5ya-tw&feature=youtu.be
+
+Brief outline:
+
+Speech recognition and implementation - Conor Raftery.
+
+Myo Armband gesture recognition and implementation - Gary Connelly.
+
+Game mechanics - Gary Connelly.
+
+Game audio - Conor Raftery.
+
+Game menu design - Conor Raftery.
+
+Game style - Conor Raftery, Gary Connelly.
+
+Game score/high score - Gary Connelly.
+
+Project Documentation - Gary Connelly, Conor Raftery.
+
+
